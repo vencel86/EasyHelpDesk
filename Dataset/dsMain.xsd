@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMain" targetNamespace="http://tempuri.org/DataDataSet.xsd" xmlns:mstns="http://tempuri.org/DataDataSet.xsd" xmlns="http://tempuri.org/DataDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Public" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.EHD.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_TodaysCallTableAdapter" GeneratorDataComponentClassName="tbl_TodaysCallTableAdapter" Name="tbl_TodaysCall" UserDataComponentName="tbl_TodaysCallTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DataConnectionString1 (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tbl_CallGen.CustCode, tbl_CallGen.RefNo, tbl_CallGen.CallDesc, tbl_CallGen.CallPriority, tbl_CallGen.RecDate, tbl_CallGen.RecEmpCode, tbl_CallGen.AssignCode, 
+                         tbl_CallGen.CurrentStatus, tbl_Cust.CustName, tbl_Emp.EmpName, tbl_CallGen.CallUnder, tbl_CType.CType, Format(tbl_CallGen.DuesOn, 'mm/dd/yyyy') AS Expr1, 
+                         tbl_CallGen.CallCode
+FROM            (((tbl_CallGen INNER JOIN
+                         tbl_Cust ON tbl_CallGen.CustCode = tbl_Cust.CustCode) INNER JOIN
+                         tbl_Emp ON tbl_CallGen.RecEmpCode = tbl_Emp.EmpCode) INNER JOIN
+                         tbl_CType ON tbl_CallGen.CallUnder = tbl_CType.MCode)
+WHERE        (format(tbl_CallGen.RecDate, 'mm/dd/yyyy') = format(NOW(), 'MM/dd/yyyy'))
+ORDER BY tbl_CallGen.RecDate, tbl_CallGen.RefNo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CallCode" DataSetColumn="CallCode" />
+              <Mapping SourceColumn="CustCode" DataSetColumn="CustCode" />
+              <Mapping SourceColumn="RefNo" DataSetColumn="RefNo" />
+              <Mapping SourceColumn="CallDesc" DataSetColumn="CallDesc" />
+              <Mapping SourceColumn="CallPriority" DataSetColumn="CallPriority" />
+              <Mapping SourceColumn="CurrentStatus" DataSetColumn="CurrentStatus" />
+              <Mapping SourceColumn="CustName" DataSetColumn="CustName" />
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="RecDate" DataSetColumn="RecDate" />
+              <Mapping SourceColumn="RecEmpCode" DataSetColumn="RecEmpCode" />
+              <Mapping SourceColumn="AssignCode" DataSetColumn="AssignCode" />
+              <Mapping SourceColumn="CallUnder" DataSetColumn="CallUnder" />
+              <Mapping SourceColumn="CType" DataSetColumn="CType" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_ClosedCallsTableAdapter" GeneratorDataComponentClassName="tbl_ClosedCallsTableAdapter" Name="tbl_ClosedCalls" UserDataComponentName="tbl_ClosedCallsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_CallGen.CallCode, tbl_CallGen.CustCode, tbl_CallGen.RefNo, tbl_CallGen.CallUnder, tbl_CallGen.CallDesc, tbl_CallGen.CallPriority, tbl_CallGen.CallRes, 
+                         tbl_CallGen.RecDate, tbl_CallGen.RecEmpCode, tbl_CallGen.AssignCode, tbl_CallGen.CurrentStatus, tbl_Cust.CustName, tbl_Emp.EmpName
+FROM            ((tbl_CallGen INNER JOIN
+                         tbl_Cust ON tbl_CallGen.CustCode = tbl_Cust.CustCode) INNER JOIN
+                         tbl_Emp ON tbl_CallGen.AssignCode = tbl_Emp.EmpCode)
+WHERE        (tbl_CallGen.CurrentStatus = 'Solved')
+ORDER BY tbl_CallGen.RecDate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CallCode" DataSetColumn="CallCode" />
+              <Mapping SourceColumn="CustCode" DataSetColumn="CustCode" />
+              <Mapping SourceColumn="RefNo" DataSetColumn="RefNo" />
+              <Mapping SourceColumn="CallDesc" DataSetColumn="CallDesc" />
+              <Mapping SourceColumn="CallPriority" DataSetColumn="CallPriority" />
+              <Mapping SourceColumn="CurrentStatus" DataSetColumn="CurrentStatus" />
+              <Mapping SourceColumn="CustName" DataSetColumn="CustName" />
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="CallUnder" DataSetColumn="CallUnder" />
+              <Mapping SourceColumn="CallRes" DataSetColumn="CallRes" />
+              <Mapping SourceColumn="RecDate" DataSetColumn="RecDate" />
+              <Mapping SourceColumn="RecEmpCode" DataSetColumn="RecEmpCode" />
+              <Mapping SourceColumn="AssignCode" DataSetColumn="AssignCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_SingleCallTableAdapter" GeneratorDataComponentClassName="tbl_SingleCallTableAdapter" Name="tbl_SingleCall" UserDataComponentName="tbl_SingleCallTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_CallGen.CallCode, tbl_CallGen.RefNo, tbl_CallGen.CallFrom, tbl_CallGen.CustCode, tbl_CallGen.RecDate, tbl_CallGen.CallerName, tbl_CallGen.CallerContact, 
+                         tbl_CallGen.CallSCode, tbl_CallGen.CallUnder, tbl_CallGen.CallDesc, tbl_CallGen.CallPriority, tbl_CallGen.DuesOn, tbl_CallGen.CurrentStatus, 
+                         tbl_CallGen.RecEmpCode, tbl_CallGen.AssignCode, tbl_CallGen.CallRes, tbl_Cust.CustName, tbl_CFrom.CFrom
+FROM            ((((tbl_CallGen INNER JOIN
+                         tbl_Cust ON tbl_CallGen.CustCode = tbl_Cust.CustCode) INNER JOIN
+                         tbl_CFrom ON tbl_CallGen.CallFrom = tbl_CFrom.MCode) INNER JOIN
+                         tbl_CType ON tbl_CallGen.CallUnder = tbl_CType.MCode) INNER JOIN
+                         tbl_Ser ON tbl_CallGen.CallSCode = tbl_Ser.MCode)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CallCode" DataSetColumn="CallCode" />
+              <Mapping SourceColumn="CustCode" DataSetColumn="CustCode" />
+              <Mapping SourceColumn="RefNo" DataSetColumn="RefNo" />
+              <Mapping SourceColumn="CallDesc" DataSetColumn="CallDesc" />
+              <Mapping SourceColumn="CallPriority" DataSetColumn="CallPriority" />
+              <Mapping SourceColumn="CurrentStatus" DataSetColumn="CurrentStatus" />
+              <Mapping SourceColumn="CallFrom" DataSetColumn="CallFrom" />
+              <Mapping SourceColumn="RecDate" DataSetColumn="RecDate" />
+              <Mapping SourceColumn="CallerName" DataSetColumn="CallerName" />
+              <Mapping SourceColumn="CallerContact" DataSetColumn="CallerContact" />
+              <Mapping SourceColumn="CallSCode" DataSetColumn="CallSCode" />
+              <Mapping SourceColumn="CallUnder" DataSetColumn="CallUnder" />
+              <Mapping SourceColumn="DuesOn" DataSetColumn="DuesOn" />
+              <Mapping SourceColumn="RecEmpCode" DataSetColumn="RecEmpCode" />
+              <Mapping SourceColumn="AssignCode" DataSetColumn="AssignCode" />
+              <Mapping SourceColumn="CallRes" DataSetColumn="CallRes" />
+              <Mapping SourceColumn="CustName" DataSetColumn="CustName" />
+              <Mapping SourceColumn="CFrom" DataSetColumn="CFrom" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_FollowUpTableAdapter" GeneratorDataComponentClassName="tbl_FollowUpTableAdapter" Name="tbl_FollowUp" UserDataComponentName="tbl_FollowUpTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_Emp.EmpName, tbl_CallGen_F.FDate, tbl_CallGen_F.ActionDone
+FROM            (tbl_Emp INNER JOIN
+                         tbl_CallGen_F ON tbl_Emp.EmpCode = tbl_CallGen_F.EmpCode)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="FDate" DataSetColumn="FDate" />
+              <Mapping SourceColumn="ActionDone" DataSetColumn="ActionDone" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_AllCallsTableAdapter" GeneratorDataComponentClassName="tbl_AllCallsTableAdapter" Name="tbl_AllCalls" UserDataComponentName="tbl_AllCallsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_CallGen.CallCode, tbl_CallGen.CustCode, tbl_CallGen.RefNo, tbl_CallGen.CallUnder, tbl_CallGen.CallDesc, tbl_CallGen.CallPriority, tbl_CallGen.CallRes, 
+                         tbl_CallGen.RecDate, tbl_CallGen.RecEmpCode, tbl_CallGen.AssignCode, tbl_CallGen.CurrentStatus, tbl_Cust.CustName, tbl_Emp.EmpName
+FROM            ((tbl_CallGen INNER JOIN
+                         tbl_Cust ON tbl_CallGen.CustCode = tbl_Cust.CustCode) INNER JOIN
+                         tbl_Emp ON tbl_CallGen.RecEmpCode = tbl_Emp.EmpCode)
+ORDER BY tbl_CallGen.RefNo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CallCode" DataSetColumn="CallCode" />
+              <Mapping SourceColumn="CustCode" DataSetColumn="CustCode" />
+              <Mapping SourceColumn="RefNo" DataSetColumn="RefNo" />
+              <Mapping SourceColumn="CallDesc" DataSetColumn="CallDesc" />
+              <Mapping SourceColumn="CallPriority" DataSetColumn="CallPriority" />
+              <Mapping SourceColumn="CurrentStatus" DataSetColumn="CurrentStatus" />
+              <Mapping SourceColumn="CustName" DataSetColumn="CustName" />
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="CallUnder" DataSetColumn="CallUnder" />
+              <Mapping SourceColumn="CallRes" DataSetColumn="CallRes" />
+              <Mapping SourceColumn="RecDate" DataSetColumn="RecDate" />
+              <Mapping SourceColumn="RecEmpCode" DataSetColumn="RecEmpCode" />
+              <Mapping SourceColumn="AssignCode" DataSetColumn="AssignCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_CustomReportAdapter" GeneratorDataComponentClassName="tbl_CustomReportAdapter" Name="tbl_CustomReport" UserDataComponentName="tbl_CustomReportAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_CallGen.CustCode, tbl_CallGen.RefNo, tbl_CallGen.CallDesc, tbl_CallGen.CallPriority, tbl_CallGen.RecDate, tbl_CallGen.RecEmpCode, tbl_CallGen.AssignCode, 
+                         tbl_CallGen.CurrentStatus, tbl_Cust.CustName, tbl_Emp.EmpName, tbl_CallGen.CallUnder, tbl_CType.CType, Format(tbl_CallGen.DuesOn, 'mm/dd/yyyy') AS Expr1, 
+                         tbl_CallGen.CallCode, tbl_Ser.SName
+FROM            (((tbl_CallGen INNER JOIN
+                         tbl_Cust ON tbl_CallGen.CustCode = tbl_Cust.CustCode) INNER JOIN
+                         tbl_Emp ON tbl_CallGen.RecEmpCode = tbl_Emp.EmpCode AND tbl_CallGen.AssignCode = tbl_Emp.EmpCode) INNER JOIN
+                         tbl_Ser ON tbl_CallGen.CallSCode = tbl_Ser.MCode), tbl_CType
+ORDER BY tbl_CallGen.RecDate, tbl_CallGen.RefNo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CallCode" DataSetColumn="CallCode" />
+              <Mapping SourceColumn="CustCode" DataSetColumn="CustCode" />
+              <Mapping SourceColumn="RefNo" DataSetColumn="RefNo" />
+              <Mapping SourceColumn="CallDesc" DataSetColumn="CallDesc" />
+              <Mapping SourceColumn="CallPriority" DataSetColumn="CallPriority" />
+              <Mapping SourceColumn="CurrentStatus" DataSetColumn="CurrentStatus" />
+              <Mapping SourceColumn="CustName" DataSetColumn="CustName" />
+              <Mapping SourceColumn="EmpName" DataSetColumn="EmpName" />
+              <Mapping SourceColumn="RecDate" DataSetColumn="RecDate" />
+              <Mapping SourceColumn="RecEmpCode" DataSetColumn="RecEmpCode" />
+              <Mapping SourceColumn="AssignCode" DataSetColumn="AssignCode" />
+              <Mapping SourceColumn="CallUnder" DataSetColumn="CallUnder" />
+              <Mapping SourceColumn="CType" DataSetColumn="CType" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="SName" DataSetColumn="SName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_OpenCallsTableAdapter" GeneratorDataComponentClassName="tbl_OpenCallsTableAdapter" Name="tbl_OpenCalls" UserDataComponentName="tbl_OpenCallsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectName="tbl_Cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        tbl_Cust.CustName AS Expr1, tbl_Cust.Salutation AS Expr2, tbl_Cust.Add1 AS Expr3, tbl_Cust.Add2 AS Expr4, tbl_Cust.Landmark, tbl_Cust.Area, tbl_Cust.City, 
+                         tbl_Cust.State, tbl_Cust.PostalCode, tbl_Cust.Country, tbl_Cust.TelO, tbl_Cust.TelR, tbl_Cust.Fax, tbl_Cust.Cellphone, tbl_Cust.Email
+FROM            tbl_CallGen, tbl_Cust
+WHERE        (tbl_CallGen.CurrentStatus = 'Open')
+ORDER BY tbl_CallGen.RecDate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+              <Mapping SourceColumn="Expr4" DataSetColumn="Expr4" />
+              <Mapping SourceColumn="Landmark" DataSetColumn="Landmark" />
+              <Mapping SourceColumn="Area" DataSetColumn="Area" />
+              <Mapping SourceColumn="City" DataSetColumn="City" />
+              <Mapping SourceColumn="State" DataSetColumn="State" />
+              <Mapping SourceColumn="PostalCode" DataSetColumn="PostalCode" />
+              <Mapping SourceColumn="Country" DataSetColumn="Country" />
+              <Mapping SourceColumn="TelO" DataSetColumn="TelO" />
+              <Mapping SourceColumn="TelR" DataSetColumn="TelR" />
+              <Mapping SourceColumn="Fax" DataSetColumn="Fax" />
+              <Mapping SourceColumn="Cellphone" DataSetColumn="Cellphone" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMain" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsMain" msprop:Generator_UserDSName="dsMain">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_TodaysCall" msprop:Generator_TableClassName="tbl_TodaysCallDataTable" msprop:Generator_TableVarName="tabletbl_TodaysCall" msprop:Generator_TablePropName="tbl_TodaysCall" msprop:Generator_RowDeletingName="tbl_TodaysCallRowDeleting" msprop:Generator_UserTableName="tbl_TodaysCall" msprop:Generator_RowChangingName="tbl_TodaysCallRowChanging" msprop:Generator_RowEvHandlerName="tbl_TodaysCallRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_TodaysCallRowDeleted" msprop:Generator_RowEvArgName="tbl_TodaysCallRowChangeEvent" msprop:Generator_RowChangedName="tbl_TodaysCallRowChanged" msprop:Generator_RowClassName="tbl_TodaysCallRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallCode" msprop:Generator_ColumnVarNameInTable="columnCallCode" msprop:Generator_ColumnPropNameInRow="CallCode" msprop:Generator_ColumnPropNameInTable="CallCodeColumn" msprop:Generator_UserColumnName="CallCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustCode" msprop:Generator_ColumnVarNameInTable="columnCustCode" msprop:Generator_ColumnPropNameInRow="CustCode" msprop:Generator_ColumnPropNameInTable="CustCodeColumn" msprop:Generator_UserColumnName="CustCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefNo" msprop:Generator_ColumnVarNameInTable="columnRefNo" msprop:Generator_ColumnPropNameInRow="RefNo" msprop:Generator_ColumnPropNameInTable="RefNoColumn" msprop:Generator_UserColumnName="RefNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallType" msprop:Generator_ColumnVarNameInTable="columnCallType" msprop:Generator_ColumnPropNameInRow="CallType" msprop:Generator_ColumnPropNameInTable="CallTypeColumn" msprop:Generator_UserColumnName="CallType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallDesc" msprop:Generator_ColumnVarNameInTable="columnCallDesc" msprop:Generator_ColumnPropNameInRow="CallDesc" msprop:Generator_ColumnPropNameInTable="CallDescColumn" msprop:Generator_UserColumnName="CallDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallPriority" msprop:Generator_ColumnVarNameInTable="columnCallPriority" msprop:Generator_ColumnPropNameInRow="CallPriority" msprop:Generator_ColumnPropNameInTable="CallPriorityColumn" msprop:Generator_UserColumnName="CallPriority" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallResolution" msprop:Generator_ColumnVarNameInTable="columnCallResolution" msprop:Generator_ColumnPropNameInRow="CallResolution" msprop:Generator_ColumnPropNameInTable="CallResolutionColumn" msprop:Generator_UserColumnName="CallResolution" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignEmpCode" msprop:Generator_ColumnVarNameInTable="columnAssignEmpCode" msprop:Generator_ColumnPropNameInRow="AssignEmpCode" msprop:Generator_ColumnPropNameInTable="AssignEmpCodeColumn" msprop:Generator_UserColumnName="AssignEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastEditDate" msprop:Generator_ColumnVarNameInTable="columnLastEditDate" msprop:Generator_ColumnPropNameInRow="LastEditDate" msprop:Generator_ColumnPropNameInTable="LastEditDateColumn" msprop:Generator_UserColumnName="LastEditDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustName" msprop:Generator_ColumnVarNameInTable="columnCustName" msprop:Generator_ColumnPropNameInRow="CustName" msprop:Generator_ColumnPropNameInTable="CustNameColumn" msprop:Generator_UserColumnName="CustName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecDate" msprop:Generator_ColumnVarNameInTable="columnRecDate" msprop:Generator_ColumnPropNameInRow="RecDate" msprop:Generator_ColumnPropNameInTable="RecDateColumn" msprop:Generator_UserColumnName="RecDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecEmpCode" msprop:Generator_ColumnVarNameInTable="columnRecEmpCode" msprop:Generator_ColumnPropNameInRow="RecEmpCode" msprop:Generator_ColumnPropNameInTable="RecEmpCodeColumn" msprop:Generator_UserColumnName="RecEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignCode" msprop:Generator_ColumnVarNameInTable="columnAssignCode" msprop:Generator_ColumnPropNameInRow="AssignCode" msprop:Generator_ColumnPropNameInTable="AssignCodeColumn" msprop:Generator_UserColumnName="AssignCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallUnder" msprop:Generator_ColumnVarNameInTable="columnCallUnder" msprop:Generator_ColumnPropNameInRow="CallUnder" msprop:Generator_ColumnPropNameInTable="CallUnderColumn" msprop:Generator_UserColumnName="CallUnder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CType" msprop:Generator_ColumnVarNameInTable="columnCType" msprop:Generator_ColumnPropNameInRow="_CType" msprop:Generator_ColumnPropNameInTable="CTypeColumn" msprop:Generator_UserColumnName="CType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_ClosedCalls" msprop:Generator_TableClassName="tbl_ClosedCallsDataTable" msprop:Generator_TableVarName="tabletbl_ClosedCalls" msprop:Generator_TablePropName="tbl_ClosedCalls" msprop:Generator_RowDeletingName="tbl_ClosedCallsRowDeleting" msprop:Generator_UserTableName="tbl_ClosedCalls" msprop:Generator_RowChangingName="tbl_ClosedCallsRowChanging" msprop:Generator_RowEvHandlerName="tbl_ClosedCallsRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_ClosedCallsRowDeleted" msprop:Generator_RowEvArgName="tbl_ClosedCallsRowChangeEvent" msprop:Generator_RowChangedName="tbl_ClosedCallsRowChanged" msprop:Generator_RowClassName="tbl_ClosedCallsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallCode" msprop:Generator_ColumnVarNameInTable="columnCallCode" msprop:Generator_ColumnPropNameInRow="CallCode" msprop:Generator_ColumnPropNameInTable="CallCodeColumn" msprop:Generator_UserColumnName="CallCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustCode" msprop:Generator_ColumnVarNameInTable="columnCustCode" msprop:Generator_ColumnPropNameInRow="CustCode" msprop:Generator_ColumnPropNameInTable="CustCodeColumn" msprop:Generator_UserColumnName="CustCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefNo" msprop:Generator_ColumnVarNameInTable="columnRefNo" msprop:Generator_ColumnPropNameInRow="RefNo" msprop:Generator_ColumnPropNameInTable="RefNoColumn" msprop:Generator_UserColumnName="RefNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallType" msprop:Generator_ColumnVarNameInTable="columnCallType" msprop:Generator_ColumnPropNameInRow="CallType" msprop:Generator_ColumnPropNameInTable="CallTypeColumn" msprop:Generator_UserColumnName="CallType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallDesc" msprop:Generator_ColumnVarNameInTable="columnCallDesc" msprop:Generator_ColumnPropNameInRow="CallDesc" msprop:Generator_ColumnPropNameInTable="CallDescColumn" msprop:Generator_UserColumnName="CallDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallPriority" msprop:Generator_ColumnVarNameInTable="columnCallPriority" msprop:Generator_ColumnPropNameInRow="CallPriority" msprop:Generator_ColumnPropNameInTable="CallPriorityColumn" msprop:Generator_UserColumnName="CallPriority" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallResolution" msprop:Generator_ColumnVarNameInTable="columnCallResolution" msprop:Generator_ColumnPropNameInRow="CallResolution" msprop:Generator_ColumnPropNameInTable="CallResolutionColumn" msprop:Generator_UserColumnName="CallResolution" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastEditDate" msprop:Generator_ColumnVarNameInTable="columnLastEditDate" msprop:Generator_ColumnPropNameInRow="LastEditDate" msprop:Generator_ColumnPropNameInTable="LastEditDateColumn" msprop:Generator_UserColumnName="LastEditDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustName" msprop:Generator_ColumnVarNameInTable="columnCustName" msprop:Generator_ColumnPropNameInRow="CustName" msprop:Generator_ColumnPropNameInTable="CustNameColumn" msprop:Generator_UserColumnName="CustName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallUnder" msprop:Generator_ColumnVarNameInTable="columnCallUnder" msprop:Generator_ColumnPropNameInRow="CallUnder" msprop:Generator_ColumnPropNameInTable="CallUnderColumn" msprop:Generator_UserColumnName="CallUnder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallRes" msprop:Generator_ColumnVarNameInTable="columnCallRes" msprop:Generator_ColumnPropNameInRow="CallRes" msprop:Generator_ColumnPropNameInTable="CallResColumn" msprop:Generator_UserColumnName="CallRes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecDate" msprop:Generator_ColumnVarNameInTable="columnRecDate" msprop:Generator_ColumnPropNameInRow="RecDate" msprop:Generator_ColumnPropNameInTable="RecDateColumn" msprop:Generator_UserColumnName="RecDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecEmpCode" msprop:Generator_ColumnVarNameInTable="columnRecEmpCode" msprop:Generator_ColumnPropNameInRow="RecEmpCode" msprop:Generator_ColumnPropNameInTable="RecEmpCodeColumn" msprop:Generator_UserColumnName="RecEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignCode" msprop:Generator_ColumnVarNameInTable="columnAssignCode" msprop:Generator_ColumnPropNameInRow="AssignCode" msprop:Generator_ColumnPropNameInTable="AssignCodeColumn" msprop:Generator_UserColumnName="AssignCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_SingleCall" msprop:Generator_TableClassName="tbl_SingleCallDataTable" msprop:Generator_TableVarName="tabletbl_SingleCall" msprop:Generator_TablePropName="tbl_SingleCall" msprop:Generator_RowDeletingName="tbl_SingleCallRowDeleting" msprop:Generator_UserTableName="tbl_SingleCall" msprop:Generator_RowChangingName="tbl_SingleCallRowChanging" msprop:Generator_RowEvHandlerName="tbl_SingleCallRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_SingleCallRowDeleted" msprop:Generator_RowEvArgName="tbl_SingleCallRowChangeEvent" msprop:Generator_RowChangedName="tbl_SingleCallRowChanged" msprop:Generator_RowClassName="tbl_SingleCallRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallCode" msprop:Generator_ColumnVarNameInTable="columnCallCode" msprop:Generator_ColumnPropNameInRow="CallCode" msprop:Generator_ColumnPropNameInTable="CallCodeColumn" msprop:Generator_UserColumnName="CallCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustCode" msprop:Generator_ColumnVarNameInTable="columnCustCode" msprop:Generator_ColumnPropNameInRow="CustCode" msprop:Generator_ColumnPropNameInTable="CustCodeColumn" msprop:Generator_UserColumnName="CustCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefNo" msprop:Generator_ColumnVarNameInTable="columnRefNo" msprop:Generator_ColumnPropNameInRow="RefNo" msprop:Generator_ColumnPropNameInTable="RefNoColumn" msprop:Generator_UserColumnName="RefNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallDesc" msprop:Generator_ColumnVarNameInTable="columnCallDesc" msprop:Generator_ColumnPropNameInRow="CallDesc" msprop:Generator_ColumnPropNameInTable="CallDescColumn" msprop:Generator_UserColumnName="CallDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallPriority" msprop:Generator_ColumnVarNameInTable="columnCallPriority" msprop:Generator_ColumnPropNameInRow="CallPriority" msprop:Generator_ColumnPropNameInTable="CallPriorityColumn" msprop:Generator_UserColumnName="CallPriority" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallFrom" msprop:Generator_ColumnVarNameInTable="columnCallFrom" msprop:Generator_ColumnPropNameInRow="CallFrom" msprop:Generator_ColumnPropNameInTable="CallFromColumn" msprop:Generator_UserColumnName="CallFrom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecDate" msprop:Generator_ColumnVarNameInTable="columnRecDate" msprop:Generator_ColumnPropNameInRow="RecDate" msprop:Generator_ColumnPropNameInTable="RecDateColumn" msprop:Generator_UserColumnName="RecDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CallerName" msprop:Generator_ColumnVarNameInTable="columnCallerName" msprop:Generator_ColumnPropNameInRow="CallerName" msprop:Generator_ColumnPropNameInTable="CallerNameColumn" msprop:Generator_UserColumnName="CallerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallerContact" msprop:Generator_ColumnVarNameInTable="columnCallerContact" msprop:Generator_ColumnPropNameInRow="CallerContact" msprop:Generator_ColumnPropNameInTable="CallerContactColumn" msprop:Generator_UserColumnName="CallerContact" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallSCode" msprop:Generator_ColumnVarNameInTable="columnCallSCode" msprop:Generator_ColumnPropNameInRow="CallSCode" msprop:Generator_ColumnPropNameInTable="CallSCodeColumn" msprop:Generator_UserColumnName="CallSCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallUnder" msprop:Generator_ColumnVarNameInTable="columnCallUnder" msprop:Generator_ColumnPropNameInRow="CallUnder" msprop:Generator_ColumnPropNameInTable="CallUnderColumn" msprop:Generator_UserColumnName="CallUnder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DuesOn" msprop:Generator_ColumnVarNameInTable="columnDuesOn" msprop:Generator_ColumnPropNameInRow="DuesOn" msprop:Generator_ColumnPropNameInTable="DuesOnColumn" msprop:Generator_UserColumnName="DuesOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecEmpCode" msprop:Generator_ColumnVarNameInTable="columnRecEmpCode" msprop:Generator_ColumnPropNameInRow="RecEmpCode" msprop:Generator_ColumnPropNameInTable="RecEmpCodeColumn" msprop:Generator_UserColumnName="RecEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignCode" msprop:Generator_ColumnVarNameInTable="columnAssignCode" msprop:Generator_ColumnPropNameInRow="AssignCode" msprop:Generator_ColumnPropNameInTable="AssignCodeColumn" msprop:Generator_UserColumnName="AssignCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallRes" msprop:Generator_ColumnVarNameInTable="columnCallRes" msprop:Generator_ColumnPropNameInRow="CallRes" msprop:Generator_ColumnPropNameInTable="CallResColumn" msprop:Generator_UserColumnName="CallRes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustName" msprop:Generator_ColumnVarNameInTable="columnCustName" msprop:Generator_ColumnPropNameInRow="CustName" msprop:Generator_ColumnPropNameInTable="CustNameColumn" msprop:Generator_UserColumnName="CustName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CFrom" msprop:Generator_ColumnVarNameInTable="columnCFrom" msprop:Generator_ColumnPropNameInRow="CFrom" msprop:Generator_ColumnPropNameInTable="CFromColumn" msprop:Generator_UserColumnName="CFrom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_FollowUp" msprop:Generator_TableClassName="tbl_FollowUpDataTable" msprop:Generator_TableVarName="tabletbl_FollowUp" msprop:Generator_TablePropName="tbl_FollowUp" msprop:Generator_RowDeletingName="tbl_FollowUpRowDeleting" msprop:Generator_UserTableName="tbl_FollowUp" msprop:Generator_RowChangingName="tbl_FollowUpRowChanging" msprop:Generator_RowEvHandlerName="tbl_FollowUpRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_FollowUpRowDeleted" msprop:Generator_RowEvArgName="tbl_FollowUpRowChangeEvent" msprop:Generator_RowChangedName="tbl_FollowUpRowChanged" msprop:Generator_RowClassName="tbl_FollowUpRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallType" msprop:Generator_ColumnVarNameInTable="columnCallType" msprop:Generator_ColumnPropNameInRow="CallType" msprop:Generator_ColumnPropNameInTable="CallTypeColumn" msprop:Generator_UserColumnName="CallType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallResolution" msprop:Generator_ColumnVarNameInTable="columnCallResolution" msprop:Generator_ColumnPropNameInRow="CallResolution" msprop:Generator_ColumnPropNameInTable="CallResolutionColumn" msprop:Generator_UserColumnName="CallResolution" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignEmpCode" msprop:Generator_ColumnVarNameInTable="columnAssignEmpCode" msprop:Generator_ColumnPropNameInRow="AssignEmpCode" msprop:Generator_ColumnPropNameInTable="AssignEmpCodeColumn" msprop:Generator_UserColumnName="AssignEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastEditDate" msprop:Generator_ColumnVarNameInTable="columnLastEditDate" msprop:Generator_ColumnPropNameInRow="LastEditDate" msprop:Generator_ColumnPropNameInTable="LastEditDateColumn" msprop:Generator_UserColumnName="LastEditDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FDate" msprop:Generator_ColumnVarNameInTable="columnFDate" msprop:Generator_ColumnPropNameInRow="FDate" msprop:Generator_ColumnPropNameInTable="FDateColumn" msprop:Generator_UserColumnName="FDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ActionDone" msprop:Generator_ColumnVarNameInTable="columnActionDone" msprop:Generator_ColumnPropNameInRow="ActionDone" msprop:Generator_ColumnPropNameInTable="ActionDoneColumn" msprop:Generator_UserColumnName="ActionDone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_AllCalls" msprop:Generator_TableClassName="tbl_AllCallsDataTable" msprop:Generator_TableVarName="tabletbl_AllCalls" msprop:Generator_TablePropName="tbl_AllCalls" msprop:Generator_RowDeletingName="tbl_AllCallsRowDeleting" msprop:Generator_UserTableName="tbl_AllCalls" msprop:Generator_RowChangingName="tbl_AllCallsRowChanging" msprop:Generator_RowEvHandlerName="tbl_AllCallsRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_AllCallsRowDeleted" msprop:Generator_RowEvArgName="tbl_AllCallsRowChangeEvent" msprop:Generator_RowChangedName="tbl_AllCallsRowChanged" msprop:Generator_RowClassName="tbl_AllCallsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallCode" msprop:Generator_ColumnVarNameInTable="columnCallCode" msprop:Generator_ColumnPropNameInRow="CallCode" msprop:Generator_ColumnPropNameInTable="CallCodeColumn" msprop:Generator_UserColumnName="CallCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustCode" msprop:Generator_ColumnVarNameInTable="columnCustCode" msprop:Generator_ColumnPropNameInRow="CustCode" msprop:Generator_ColumnPropNameInTable="CustCodeColumn" msprop:Generator_UserColumnName="CustCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefNo" msprop:Generator_ColumnVarNameInTable="columnRefNo" msprop:Generator_ColumnPropNameInRow="RefNo" msprop:Generator_ColumnPropNameInTable="RefNoColumn" msprop:Generator_UserColumnName="RefNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallDesc" msprop:Generator_ColumnVarNameInTable="columnCallDesc" msprop:Generator_ColumnPropNameInRow="CallDesc" msprop:Generator_ColumnPropNameInTable="CallDescColumn" msprop:Generator_UserColumnName="CallDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallPriority" msprop:Generator_ColumnVarNameInTable="columnCallPriority" msprop:Generator_ColumnPropNameInRow="CallPriority" msprop:Generator_ColumnPropNameInTable="CallPriorityColumn" msprop:Generator_UserColumnName="CallPriority" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustName" msprop:Generator_ColumnVarNameInTable="columnCustName" msprop:Generator_ColumnPropNameInRow="CustName" msprop:Generator_ColumnPropNameInTable="CustNameColumn" msprop:Generator_UserColumnName="CustName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallUnder" msprop:Generator_ColumnVarNameInTable="columnCallUnder" msprop:Generator_ColumnPropNameInRow="CallUnder" msprop:Generator_ColumnPropNameInTable="CallUnderColumn" msprop:Generator_UserColumnName="CallUnder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallRes" msprop:Generator_ColumnVarNameInTable="columnCallRes" msprop:Generator_ColumnPropNameInRow="CallRes" msprop:Generator_ColumnPropNameInTable="CallResColumn" msprop:Generator_UserColumnName="CallRes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecDate" msprop:Generator_ColumnVarNameInTable="columnRecDate" msprop:Generator_ColumnPropNameInRow="RecDate" msprop:Generator_ColumnPropNameInTable="RecDateColumn" msprop:Generator_UserColumnName="RecDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecEmpCode" msprop:Generator_ColumnVarNameInTable="columnRecEmpCode" msprop:Generator_ColumnPropNameInRow="RecEmpCode" msprop:Generator_ColumnPropNameInTable="RecEmpCodeColumn" msprop:Generator_UserColumnName="RecEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignCode" msprop:Generator_ColumnVarNameInTable="columnAssignCode" msprop:Generator_ColumnPropNameInRow="AssignCode" msprop:Generator_ColumnPropNameInTable="AssignCodeColumn" msprop:Generator_UserColumnName="AssignCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_CustomReport" msprop:Generator_TableClassName="tbl_CustomReportDataTable" msprop:Generator_TableVarName="tabletbl_CustomReport" msprop:Generator_TablePropName="tbl_CustomReport" msprop:Generator_RowDeletingName="tbl_CustomReportRowDeleting" msprop:Generator_UserTableName="tbl_CustomReport" msprop:Generator_RowChangingName="tbl_CustomReportRowChanging" msprop:Generator_RowEvHandlerName="tbl_CustomReportRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_CustomReportRowDeleted" msprop:Generator_RowEvArgName="tbl_CustomReportRowChangeEvent" msprop:Generator_RowChangedName="tbl_CustomReportRowChanged" msprop:Generator_RowClassName="tbl_CustomReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CallCode" msprop:Generator_ColumnVarNameInTable="columnCallCode" msprop:Generator_ColumnPropNameInRow="CallCode" msprop:Generator_ColumnPropNameInTable="CallCodeColumn" msprop:Generator_UserColumnName="CallCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustCode" msprop:Generator_ColumnVarNameInTable="columnCustCode" msprop:Generator_ColumnPropNameInRow="CustCode" msprop:Generator_ColumnPropNameInTable="CustCodeColumn" msprop:Generator_UserColumnName="CustCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefNo" msprop:Generator_ColumnVarNameInTable="columnRefNo" msprop:Generator_ColumnPropNameInRow="RefNo" msprop:Generator_ColumnPropNameInTable="RefNoColumn" msprop:Generator_UserColumnName="RefNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallType" msprop:Generator_ColumnVarNameInTable="columnCallType" msprop:Generator_ColumnPropNameInRow="CallType" msprop:Generator_ColumnPropNameInTable="CallTypeColumn" msprop:Generator_UserColumnName="CallType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallDesc" msprop:Generator_ColumnVarNameInTable="columnCallDesc" msprop:Generator_ColumnPropNameInRow="CallDesc" msprop:Generator_ColumnPropNameInTable="CallDescColumn" msprop:Generator_UserColumnName="CallDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallPriority" msprop:Generator_ColumnVarNameInTable="columnCallPriority" msprop:Generator_ColumnPropNameInRow="CallPriority" msprop:Generator_ColumnPropNameInTable="CallPriorityColumn" msprop:Generator_UserColumnName="CallPriority" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallResolution" msprop:Generator_ColumnVarNameInTable="columnCallResolution" msprop:Generator_ColumnPropNameInRow="CallResolution" msprop:Generator_ColumnPropNameInTable="CallResolutionColumn" msprop:Generator_UserColumnName="CallResolution" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignEmpCode" msprop:Generator_ColumnVarNameInTable="columnAssignEmpCode" msprop:Generator_ColumnPropNameInRow="AssignEmpCode" msprop:Generator_ColumnPropNameInTable="AssignEmpCodeColumn" msprop:Generator_UserColumnName="AssignEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastEditDate" msprop:Generator_ColumnVarNameInTable="columnLastEditDate" msprop:Generator_ColumnPropNameInRow="LastEditDate" msprop:Generator_ColumnPropNameInTable="LastEditDateColumn" msprop:Generator_UserColumnName="LastEditDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CurrentStatus" msprop:Generator_ColumnVarNameInTable="columnCurrentStatus" msprop:Generator_ColumnPropNameInRow="CurrentStatus" msprop:Generator_ColumnPropNameInTable="CurrentStatusColumn" msprop:Generator_UserColumnName="CurrentStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustName" msprop:Generator_ColumnVarNameInTable="columnCustName" msprop:Generator_ColumnPropNameInRow="CustName" msprop:Generator_ColumnPropNameInTable="CustNameColumn" msprop:Generator_UserColumnName="CustName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmpName" msprop:Generator_ColumnVarNameInTable="columnEmpName" msprop:Generator_ColumnPropNameInRow="EmpName" msprop:Generator_ColumnPropNameInTable="EmpNameColumn" msprop:Generator_UserColumnName="EmpName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecDate" msprop:Generator_ColumnVarNameInTable="columnRecDate" msprop:Generator_ColumnPropNameInRow="RecDate" msprop:Generator_ColumnPropNameInTable="RecDateColumn" msprop:Generator_UserColumnName="RecDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecEmpCode" msprop:Generator_ColumnVarNameInTable="columnRecEmpCode" msprop:Generator_ColumnPropNameInRow="RecEmpCode" msprop:Generator_ColumnPropNameInTable="RecEmpCodeColumn" msprop:Generator_UserColumnName="RecEmpCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AssignCode" msprop:Generator_ColumnVarNameInTable="columnAssignCode" msprop:Generator_ColumnPropNameInRow="AssignCode" msprop:Generator_ColumnPropNameInTable="AssignCodeColumn" msprop:Generator_UserColumnName="AssignCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CallUnder" msprop:Generator_ColumnVarNameInTable="columnCallUnder" msprop:Generator_ColumnPropNameInRow="CallUnder" msprop:Generator_ColumnPropNameInTable="CallUnderColumn" msprop:Generator_UserColumnName="CallUnder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CType" msprop:Generator_ColumnVarNameInTable="columnCType" msprop:Generator_ColumnPropNameInRow="_CType" msprop:Generator_ColumnPropNameInTable="CTypeColumn" msprop:Generator_UserColumnName="CType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SName" msprop:Generator_ColumnVarNameInTable="columnSName" msprop:Generator_ColumnPropNameInRow="SName" msprop:Generator_ColumnPropNameInTable="SNameColumn" msprop:Generator_UserColumnName="SName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tbl_OpenCalls" msprop:Generator_TableClassName="tbl_OpenCallsDataTable" msprop:Generator_TableVarName="tabletbl_OpenCalls" msprop:Generator_TablePropName="tbl_OpenCalls" msprop:Generator_RowDeletingName="tbl_OpenCallsRowDeleting" msprop:Generator_UserTableName="tbl_OpenCalls" msprop:Generator_RowChangingName="tbl_OpenCallsRowChanging" msprop:Generator_RowEvHandlerName="tbl_OpenCallsRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_OpenCallsRowDeleted" msprop:Generator_RowEvArgName="tbl_OpenCallsRowChangeEvent" msprop:Generator_RowChangedName="tbl_OpenCallsRowChanged" msprop:Generator_RowClassName="tbl_OpenCallsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr3" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr4" msprop:Generator_ColumnVarNameInTable="columnExpr4" msprop:Generator_ColumnPropNameInRow="Expr4" msprop:Generator_ColumnPropNameInTable="Expr4Column" msprop:Generator_UserColumnName="Expr4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Landmark" msprop:Generator_ColumnVarNameInTable="columnLandmark" msprop:Generator_ColumnPropNameInRow="Landmark" msprop:Generator_ColumnPropNameInTable="LandmarkColumn" msprop:Generator_UserColumnName="Landmark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Area" msprop:Generator_ColumnVarNameInTable="columnArea" msprop:Generator_ColumnPropNameInRow="Area" msprop:Generator_ColumnPropNameInTable="AreaColumn" msprop:Generator_UserColumnName="Area" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="City" msprop:Generator_ColumnVarNameInTable="columnCity" msprop:Generator_ColumnPropNameInRow="City" msprop:Generator_ColumnPropNameInTable="CityColumn" msprop:Generator_UserColumnName="City" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnPropNameInTable="StateColumn" msprop:Generator_UserColumnName="State" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PostalCode" msprop:Generator_ColumnVarNameInTable="columnPostalCode" msprop:Generator_ColumnPropNameInRow="PostalCode" msprop:Generator_ColumnPropNameInTable="PostalCodeColumn" msprop:Generator_UserColumnName="PostalCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_UserColumnName="Country" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TelO" msprop:Generator_ColumnVarNameInTable="columnTelO" msprop:Generator_ColumnPropNameInRow="TelO" msprop:Generator_ColumnPropNameInTable="TelOColumn" msprop:Generator_UserColumnName="TelO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TelR" msprop:Generator_ColumnVarNameInTable="columnTelR" msprop:Generator_ColumnPropNameInRow="TelR" msprop:Generator_ColumnPropNameInTable="TelRColumn" msprop:Generator_UserColumnName="TelR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fax" msprop:Generator_ColumnVarNameInTable="columnFax" msprop:Generator_ColumnPropNameInRow="Fax" msprop:Generator_ColumnPropNameInTable="FaxColumn" msprop:Generator_UserColumnName="Fax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cellphone" msprop:Generator_ColumnVarNameInTable="columnCellphone" msprop:Generator_ColumnPropNameInRow="Cellphone" msprop:Generator_ColumnPropNameInTable="CellphoneColumn" msprop:Generator_UserColumnName="Cellphone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInventoryList" targetNamespace="http://tempuri.org/DataDataSet.xsd" xmlns:mstns="http://tempuri.org/DataDataSet.xsd" xmlns="http://tempuri.org/DataDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Public" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.EHD.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tbl_CallGenTableAdapter" GeneratorDataComponentClassName="tbl_CallGenTableAdapter" Name="tbl_CallGen" UserDataComponentName="tbl_CallGenTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tbl_Inventory.EName, tbl_Inventory.EDesc,
+                             (SELECT        COUNT(*)
+                               FROM            tbl_CallGen
+                               WHERE        tbl_Inventory.MCode = tbl_CallGen.CallSCode AND tbl_CallGen.CurrentStatus = 'Open'),
+                             (SELECT        COUNT(*)
+                               FROM            tbl_CallGen
+                               WHERE        tbl_Inventory.MCode = tbl_CallGen.CallSCode AND tbl_CallGen.CurrentStatus = 'Awaiting Info'),
+                             (SELECT        COUNT(*)
+                               FROM            tbl_CallGen
+                               WHERE        tbl_Inventory.MCode = tbl_CallGen.CallSCode AND tbl_CallGen.CurrentStatus = 'Awaiting Parts')
+FROM            tbl_Inventory;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EName" DataSetColumn="EName" />
+              <Mapping SourceColumn="EDesc" DataSetColumn="EDesc" />
+              <Mapping SourceColumn="OpenCalls" DataSetColumn="OpenCalls" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInventoryList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsInventoryList" msprop:Generator_UserDSName="dsInventoryList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_CallGen" msprop:Generator_TableClassName="tbl_CallGenDataTable" msprop:Generator_TableVarName="tabletbl_CallGen" msprop:Generator_TablePropName="tbl_CallGen" msprop:Generator_RowDeletingName="tbl_CallGenRowDeleting" msprop:Generator_UserTableName="tbl_CallGen" msprop:Generator_RowChangingName="tbl_CallGenRowChanging" msprop:Generator_RowEvHandlerName="tbl_CallGenRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_CallGenRowDeleted" msprop:Generator_RowEvArgName="tbl_CallGenRowChangeEvent" msprop:Generator_RowChangedName="tbl_CallGenRowChanged" msprop:Generator_RowClassName="tbl_CallGenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EName" msprop:Generator_ColumnVarNameInTable="columnEName" msprop:Generator_ColumnPropNameInRow="EName" msprop:Generator_ColumnPropNameInTable="ENameColumn" msprop:Generator_UserColumnName="EName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EDesc" msprop:Generator_ColumnVarNameInTable="columnEDesc" msprop:Generator_ColumnPropNameInRow="EDesc" msprop:Generator_ColumnPropNameInTable="EDescColumn" msprop:Generator_UserColumnName="EDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OpenCalls" msprop:Generator_ColumnVarNameInTable="columnOpenCalls" msprop:Generator_ColumnPropNameInRow="OpenCalls" msprop:Generator_ColumnPropNameInTable="OpenCallsColumn" msprop:Generator_UserColumnName="OpenCalls" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0217A20-2832-46DE-8A0E-E04C65A1A96D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>EHD.My.MyApplication</StartupObject>
+    <RootNamespace>EHD</RootNamespace>
+    <AssemblyName>Easy HelpDesk</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Easy HelpDesk.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Easy HelpDesk.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icons.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DBUpdateNetDLL, Version=2003.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DBUpdateNetDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>bin\Debug\ReqDlls\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Class\clsListviewSorter.vb" />
+    <Compile Include="Dataset\ClosedCalls.Designer.vb">
+      <DependentUpon>ClosedCalls.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\ClosedCalls.vb">
+      <DependentUpon>ClosedCalls.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Dataset\dsEmpDetails.Designer.vb">
+      <DependentUpon>dsEmpDetails.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Dataset\dsEmpAll.Designer.vb">
+      <DependentUpon>dsEmpAll.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Dataset\dsEmpAll.vb">
+      <DependentUpon>dsEmpAll.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsInventoryList.Designer.vb">
+      <DependentUpon>dsInventoryList.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Dataset\dsCallsAlls.Designer.vb">
+      <DependentUpon>dsCallsAlls.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\dsCallsAlls.vb">
+      <DependentUpon>dsCallsAlls.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Dataset\dsCustom.Designer.vb">
+      <DependentUpon>dsCustom.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\dsCustomerAll.Designer.vb">
+      <DependentUpon>dsCustomerAll.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\dsCustomerAll.vb">
+      <DependentUpon>dsCustomerAll.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Dataset\dsOpenCalls.Designer.vb">
+      <DependentUpon>dsOpenCalls.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\dsOpenCalls.vb">
+      <DependentUpon>dsOpenCalls.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Dataset\ds_SingleCall.Designer.vb">
+      <DependentUpon>ds_SingleCall.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\ds_SingleCall.vb">
+      <DependentUpon>ds_SingleCall.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Dataset\TodaysCalls.Designer.vb">
+      <DependentUpon>TodaysCalls.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Dataset\TodaysCalls.vb">
+      <DependentUpon>TodaysCalls.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.vb">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FinalOP.Designer.vb">
+      <DependentUpon>FinalOP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FinalOP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CallGen.designer.vb">
+      <DependentUpon>CallGen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CallGen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CallSearch.designer.vb">
+      <DependentUpon>CallSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CallSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AssignCall.Designer.vb">
+      <DependentUpon>AssignCall.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AssignCall.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustInventory.Designer.vb">
+      <DependentUpon>CustInventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRestore.Designer.vb">
+      <DependentUpon>frmRestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmStandBy.Designer.vb">
+      <DependentUpon>frmStandBy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStandBy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory.designer.vb">
+      <DependentUpon>Inventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.vb">
+      <DependentUpon>Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServiceForm.Designer.vb">
+      <DependentUpon>ServiceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServiceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFollowUp.Designer.vb">
+      <DependentUpon>frmFollowUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFollowUp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AllReportView.Designer.vb">
+      <DependentUpon>AllReportView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AllReportView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer.Designer.vb">
+      <DependentUpon>Customer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee.Designer.vb">
+      <DependentUpon>Employee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CallSearchQuery.Designer.vb">
+      <DependentUpon>CallSearchQuery.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CallSearchQuery.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MDIMain.Designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingForm.designer.vb">
+      <DependentUpon>SettingForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\ApplicationEvents.vb" />
+    <Compile Include="Modules\modDBRead.vb" />
+    <Compile Include="Modules\modErr.vb" />
+    <Compile Include="Modules\modGlobal.vb" />
+    <Compile Include="Modules\MyList.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FinalOP.resx">
+      <DependentUpon>FinalOP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CallGen.resx">
+      <DependentUpon>CallGen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CallSearch.resx">
+      <DependentUpon>CallSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AssignCall.resx">
+      <DependentUpon>AssignCall.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustInventory.resx">
+      <DependentUpon>CustInventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRestore.resx">
+      <DependentUpon>frmRestore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmStandBy.resx">
+      <DependentUpon>frmStandBy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inventory.resx">
+      <DependentUpon>Inventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceForm.resx">
+      <DependentUpon>ServiceForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFollowUp.resx">
+      <DependentUpon>frmFollowUp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AllReportView.resx">
+      <DependentUpon>AllReportView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer.resx">
+      <DependentUpon>Customer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee.resx">
+      <DependentUpon>Employee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CallSearchQuery.resx">
+      <DependentUpon>CallSearchQuery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingForm.resx">
+      <DependentUpon>SettingForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CallsAll.rdlc" />
+    <EmbeddedResource Include="Reports\EmpDetails.rdlc" />
+    <EmbeddedResource Include="Reports\EmpAll.rdlc" />
+    <EmbeddedResource Include="Reports\InventoryAll.rdlc" />
+    <EmbeddedResource Include="Reports\CustAll.rdlc" />
+    <EmbeddedResource Include="Reports\CallsCustom.rdlc" />
+    <EmbeddedResource Include="Reports\rptFollowUp.rdlc" />
+    <EmbeddedResource Include="Reports\CallSWhole.rdlc" />
+    <EmbeddedResource Include="Reports\CallsOpen.rdlc" />
+    <EmbeddedResource Include="Reports\CallsToday.rdlc" />
+    <EmbeddedResource Include="Reports\CallsClosed.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\ClosedCalls.xsc">
+      <DependentUpon>ClosedCalls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\ClosedCalls.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClosedCalls.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\ClosedCalls.xss">
+      <DependentUpon>ClosedCalls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsEmpDetails.xsc">
+      <DependentUpon>dsEmpDetails.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsEmpDetails.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEmpDetails.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\dsEmpDetails.xss">
+      <DependentUpon>dsEmpDetails.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsEmpAll.xsc">
+      <DependentUpon>dsEmpAll.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsEmpAll.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEmpAll.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\dsEmpAll.xss">
+      <DependentUpon>dsEmpAll.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsInventoryList.xsc">
+      <DependentUpon>dsInventoryList.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsInventoryList.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInventoryList.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\dsInventoryList.xss">
+      <DependentUpon>dsInventoryList.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCallsAlls.xsc">
+      <DependentUpon>dsCallsAlls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCallsAlls.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCallsAlls.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsCallsAlls.xss">
+      <DependentUpon>dsCallsAlls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCustom.xsc">
+      <DependentUpon>dsCustom.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCustom.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustom.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsCustom.xss">
+      <DependentUpon>dsCustom.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCustomerAll.xsc">
+      <DependentUpon>dsCustomerAll.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCustomerAll.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustomerAll.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsCustomerAll.xss">
+      <DependentUpon>dsCustomerAll.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsOpenCalls.xsc">
+      <DependentUpon>dsOpenCalls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsOpenCalls.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOpenCalls.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsOpenCalls.xss">
+      <DependentUpon>dsOpenCalls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\ds_SingleCall.xsc">
+      <DependentUpon>ds_SingleCall.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\ds_SingleCall.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_SingleCall.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\ds_SingleCall.xss">
+      <DependentUpon>ds_SingleCall.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\TodaysCalls.xsc">
+      <DependentUpon>TodaysCalls.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\TodaysCalls.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TodaysCalls.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\TodaysCalls.xss">
+      <DependentUpon>TodaysCalls.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Main Icon\ToFr.png" />
+    <None Include="Res\Main Icon\Original Big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="JRO">
+      <Guid>{AC3B8B4C-B6CA-11D1-9F31-00C04FC29D52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
