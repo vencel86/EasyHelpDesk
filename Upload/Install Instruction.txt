@@ -1,5 +1,0 @@
-1. restore mysql backup from .sql file provided.
-2. default user name and password are "admin" "admin"
-3. to change admin password go to menu Administration -> SQl Query 
-	Default password to access it "Helpdesk@2017", here you can change admin password.
-4. Admin have full rights. you can change permissions for other user via menu Administration-> User Permission.
